@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Component Storybook
+
+This project contains a collection of reusable React components, with the main focus on a customizable Dropdown component. The project is built with Next.js and Storybook for component development and documentation.
 
 ## Getting Started
 
-First, run the development server:
+### Installation
 
 ```bash
-npm run dev
+# Install dependencies
+npm install
 # or
-yarn dev
+pnpm install
 # or
-pnpm dev
-# or
-bun dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Running Storybook
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Start Storybook development server
+npm run storybook
+# or
+pnpm run storybook
+# or
+yarn storybook
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:6006](http://localhost:6006) to view the Storybook interface.
 
-## Learn More
+## Dropdown Component
 
-To learn more about Next.js, take a look at the following resources:
+A flexible and customizable dropdown component that supports both single and multiple selection modes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Basic Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```tsx
+import { Dropdown } from './src/stories/Dropdown';
 
-## Deploy on Vercel
+// Single select dropdown
+const SingleSelect = () => {
+  const [value, setValue] = useState('');
+  
+  return (
+    <Dropdown
+      label="City"
+      options={[
+        { value: '1', label: 'Jakarta' },
+        { value: '2', label: 'Surabaya' },
+        { value: '3', label: 'Bandung' }
+      ]}
+      value={value}
+      onChange={(newValue) => setValue(newValue)}
+    />
+  );
+};
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+// Multi-select dropdown
+const MultiSelect = () => {
+  const [value, setValue] = useState<string[]>([]);
+  
+  return (
+    <Dropdown
+      label="Cities"
+      options={[
+        { value: '1', label: 'Jakarta' },
+        { value: '2', label: 'Surabaya' },
+        { value: '3', label: 'Bandung' }
+      ]}
+      value={value}
+      onChange={(newValue) => setValue(newValue as string[])}
+      multiple={true}
+    />
+  );
+};
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `id` | `string` | - | Optional ID for the dropdown |
+| `label` | `string` | - | Label text displayed above the dropdown |
+| `options` | `DropdownOption[]` | Required | Array of options to display |
+| `multiple` | `boolean` | `false` | Enable multi-select mode |
+| `withSearch` | `boolean` | `true` | Show search input field |
+| `withPortal` | `boolean` | `true` | Render dropdown menu in a portal |
+| `optionLabel` | `string` | `'label'` | Key to use for option labels |
+| `value` | `string \| string[]` | Required | Selected value(s) |
+| `onChange` | `(value: string \| string[]) => void` | Required | Change handler function |
+| `className` | `string` | - | Additional CSS classes |
+| `zIndex` | `number` | `1000` | Z-index for dropdown menu |
+
+### Features
+
+- Single and multiple selection modes
+- Search functionality
+- Customizable styling
+- Keyboard navigation support
+- Portal rendering for better stacking context
+- Responsive design
+- TypeScript support
+
+## Development
+
+### Running Tests
+
+```bash
+npm run test-storybook
+# or
+pnpm run test-storybook
+# or
+yarn test-storybook
+```
+
+### Building Storybook
+
+```bash
+npm run build-storybook
+# or
+pnpm run build-storybook
+# or
+yarn build-storybook
+```
+
+This will create a static version of Storybook in the `storybook-static` directory.
