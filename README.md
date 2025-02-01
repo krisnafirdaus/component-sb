@@ -101,6 +101,17 @@ const MultiSelect = () => {
 - Responsive design
 - TypeScript support
 
+## Demo Video
+
+![Dropdown Component Demo](https://drive.google.com/file/d/1PTD6G6UAWgmuRJv2TdAxcYKL24IW06TN/view?usp=sharing)
+
+Watch the demo video above to see the Dropdown component in action, showcasing features like:
+- Single and multi-select modes
+- Real-time search filtering
+- Keyboard navigation
+- Responsive design
+- Portal rendering
+
 ## Development
 
 ### Running Tests
