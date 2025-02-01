@@ -103,7 +103,7 @@ const MultiSelect = () => {
 
 ## Demo Video
 
-![Dropdown Component Demo](https://drive.google.com/file/d/1PTD6G6UAWgmuRJv2TdAxcYKL24IW06TN/view?usp=sharing)
+[Dropdown Component Demo](https://drive.google.com/file/d/1PTD6G6UAWgmuRJv2TdAxcYKL24IW06TN/view?usp=sharing)
 
 Watch the demo video above to see the Dropdown component in action, showcasing features like:
 - Single and multi-select modes
